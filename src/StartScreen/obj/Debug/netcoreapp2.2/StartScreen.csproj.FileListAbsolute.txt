@@ -1,0 +1,14 @@
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\bin\Debug\netcoreapp2.2\StartScreen.deps.json
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\bin\Debug\netcoreapp2.2\StartScreen.runtimeconfig.json
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\bin\Debug\netcoreapp2.2\StartScreen.runtimeconfig.dev.json
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\bin\Debug\netcoreapp2.2\StartScreen.dll
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\obj\Debug\netcoreapp2.2\StartScreen.csprojAssemblyReference.cache
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\obj\Debug\netcoreapp2.2\StartScreen.csproj.CoreCompileInputs.cache
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\obj\Debug\netcoreapp2.2\StartScreen.RazorAssemblyInfo.cache
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\obj\Debug\netcoreapp2.2\StartScreen.RazorAssemblyInfo.cs
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\obj\Debug\netcoreapp2.2\StartScreen.AssemblyInfoInputs.cache
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\obj\Debug\netcoreapp2.2\StartScreen.AssemblyInfo.cs
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\obj\Debug\netcoreapp2.2\StartScreen.RazorTargetAssemblyInfo.cache
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\bin\Debug\netcoreapp2.2\StartScreen.pdb
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\obj\Debug\netcoreapp2.2\StartScreen.dll
+D:\Git_Projects\Take.StartScreen\Take.StartScreen\src\StartScreen\obj\Debug\netcoreapp2.2\StartScreen.pdb
