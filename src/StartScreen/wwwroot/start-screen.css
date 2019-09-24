@@ -5,6 +5,7 @@ html {
     --main-color: #EF3B5D;
     --back-color: #FAF9F8;
     --button-color: #FFFFFF;
+    --rgb-color: 200, 200, 200;
 }
 
 #start-screen.hide {
@@ -59,11 +60,12 @@ input[type=file] {
 }
 
 .start-screen-content::-webkit-scrollbar-track {
-    background: rgba(229,49,83, 0.4); 
+    background-color: rgba(var(--rgb-color),0.4);
+    
 }
 
 .start-screen-content::-webkit-scrollbar-thumb {
-    background: #e53153; 
+    background: var(--main-color); 
 }
 
 .start-screen-content::-webkit-scrollbar-thumb:hover {
