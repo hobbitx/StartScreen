@@ -1,6 +1,11 @@
 html {
     scroll-behavior: smooth;
 }
+:root {
+    --main-color: #EF3B5D;
+    --back-color: #FAF9F8;
+    --button-color: #FFFFFF;
+}
 
 #start-screen.hide {
     display: none;
@@ -14,6 +19,9 @@ html {
 
 #blip-chat-button-over.show {
     display: block;
+}
+input[type=file] {
+    color: transparent;
 }
 
 #blip-chat-button-over {
@@ -67,7 +75,7 @@ html {
 }
 
 #bottom-section{
-    background: #FAF9F8;
+    background: var(--back-color);
     position: absolute;
     width: 100%;
     height: 48px;
@@ -93,11 +101,11 @@ html {
 .scroll-phrase {
     font-family: Montserrat;
     font-size: 16px;
-    color: #EF3B5D;
+    color: var(--main-color);
 }
 
 .top-section {
-    background: #FAF9F8;
+    background: var(--back-color);
     position: sticky;
     width: 100%;
     height: 48px;
@@ -149,7 +157,7 @@ html {
     max-height: calc(100% - 48px);
     right: 0px;
     left: 0px;
-    background: #FAF9F8;
+    background: var(--back-color);
     top: 48px;
     padding: 0 24px;
     overflow-y: scroll;
@@ -168,7 +176,7 @@ html {
 
 .subjects-box {
     padding-bottom: 32px;
-    background: #FAF9F8;
+    background: var(--back-color);
     position: relative;
     border-radius: 4px;
     z-index: 2;
@@ -189,7 +197,7 @@ html {
 }
 
 .subject-item:hover {
-    background: #EF3B5D;
+    background: var(--main-color);
     color: #FFFFFF;
 }
 
@@ -197,7 +205,7 @@ html {
     font-family: Montserrat;
     font-weight: bold;
     font-size: 16px;
-    color: #EF3B5D;
+    color: var(--main-color);
 }
 
 .subjects-box div {
@@ -210,7 +218,8 @@ html {
 
 .question-box {
     z-index: 2;
-    background: #FAF9F8;
+    background: var(--back-color);
+    
 }
 
 .ask-question-section {

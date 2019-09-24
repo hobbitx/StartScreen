@@ -5,6 +5,10 @@
 
 #start-screen {
     opacity: 0 !important;
+    overflow-y: scroll;
+}
+input[type=file] {
+    color: transparent;
 }
 .column {
     float: left !important;

@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="./start-screen.css" rel="stylesheet" />
+    <script src="./script.js" type="text/javascript"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -48,24 +50,51 @@
     <title>Document</title>
 </head>
 <body>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+
+            document.body.style.setProperty('--main-color', @ViewBag.MainColor);
+            document.getElementById("main").value = @ViewBag.MainColor;
+        }, false);
+    </script>
     <div class="row">
         <div class="column">
 
-            <div class="dropdown">
-                <ul>
-                    <li>
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Ação</a>
-                            <a class="dropdown-item" href="#">Outra ação</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Algo mais aqui</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            <form action="update" method="post">
+                <div class="dropdown">
+                    <ul>
+                        <li><label for="pic">Escolha o icone: </label><input type="file" name="pic" accept="image/*"></li>
+                        <br />
+                        <li>
+
+                            <label for="main">Escolha a cor principal: </label>
+                            <input type="color" oninput="colorSelect(this);" onkeyup="colorSelect(this);" id="main" name="MainColor" value="@ViewBag.MainColor">
+                        </li>
+                        <br />
+
+                        <li><label for="main">Escolha o texto do menu: </label><input type="text" id="textMenu" name="textMenu"></li>
+
+                        <li>
+                            <label for="menus">Escolha o menu: </label>
+                            <select id="selectMenu" name="selectMenu">
+                                @foreach (var x in ViewBag.Menus)
+                                {
+                                    <option>@x.Title</option>
+                                }
+                            </select>
+                        </li>
+                        <br />
+                        <li><label for="main">Escolha o texto do submenu: </label><input type="text" id="textSubMenu" name="textSubMenu"></li>
+                        <br />
+                        <li><input type="submit" onkeydown="colorSelect(@ViewBag.MainColor)"></li>
+                        <br />
+                        <li>
+                           
+                        </li>
+                    </ul>
+                </div>
+
+            </form>
         </div>
         <div class="column">
             <div id="start-screen" style="width: inherit ">

@@ -13,40 +13,47 @@ namespace StartScreen.Controllers
 {
     public class MainController : Controller
     {
+
+        public static StartScreenObjects startScreen = new StartScreenObjects();
         public IActionResult Index()
         {
-            StartScreenObjects startScreem = new StartScreenObjects();
-            var itens = new ItemMenu[1];
-            itens[0] = new ItemMenu { Text = "Anime chan" };
-            var menus = new Menu[1];
-            menus[0] = new Menu { Items = itens, Title = "Teste" };
+            var itens = new List<ItemMenu>();
+            itens.Add(new ItemMenu { Text = "Anime chan" });
+            var menus = new List<Menu>();
+            menus.Add(new Menu { Items = itens, Title = "Teste" });
 
-            startScreem.Menus = menus;
+            startScreen.Menus = menus;
 
-            startScreem.GeneratePayloads();
+            startScreen.GeneratePayloads();
 
-           var x=  GenerateHtml(startScreem);
-            ViewBag.Template = x;
-
+            ViewBag.Menus = startScreen.Menus;
+            ViewBag.Template = GenerateHtml(startScreen); ;
+            ViewBag.MainColor = "#d0fd0f";
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Generate([FromForm] StartScreenObjects startScreem)
+        [HttpPost("update")]
+        public IActionResult Generate([FromForm] StartScreenObjects request)
         {
-            var itens = new ItemMenu[1];
-            itens[0] = new ItemMenu { Text = "Anime chan" };
-            var menus = new Menu[1];
-            menus[0] = new Menu { Items = itens, Title = "Teste" };
+            if (!String.IsNullOrEmpty(request.TextSubMenu))
+            {
+                var item = new ItemMenu { Text = request.TextSubMenu };
+                item.SetPayload();
+                startScreen.Menus.Where(x => x.Title.Equals(request.SelectMenu)).FirstOrDefault().Items.Add(item);
 
-            startScreem.Menus = menus;
+            }
+            else
+            {
+                var menu = new Menu { Title = request.TextMenu, Items = new List<ItemMenu>() };
+                startScreen.Menus.Add(menu);
 
-            startScreem.GeneratePayloads();
+            }
 
-            GenerateHtml(startScreem);
+            ViewBag.Template=GenerateHtml(startScreen);
+            ViewBag.MainColor = request.MainColor;
+            ViewBag.Menus = startScreen.Menus;
 
-
-            return View();
+            return View("Index");
         }
 
         public string GenerateHtml(StartScreenObjects startScreem)

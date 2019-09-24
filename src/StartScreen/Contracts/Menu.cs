@@ -9,7 +9,7 @@ namespace StartScreen.Contracts
     {
         public string Title { get; set; }
 
-        public ItemMenu[] Items { get; set; }
+        public List<ItemMenu> Items { get; set; }
 
     }
 }
