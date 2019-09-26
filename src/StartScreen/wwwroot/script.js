@@ -14,14 +14,26 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let rgb = hexToRgb(color);
     let str =  rgb.r + "," + rgb.g + ","+ rgb.b;
     document.body.style.setProperty('--rgb-color',str );
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
 
 });
 
-
-
 function colorSelect(t) {
-    document.body.style.setProperty('--main-color', t.value);
-        document.getElementById("main").value = t.value;
+    document.body.style.setProperty('--main-color', t.style.backgroundColor);
+    document.getElementById("main").value = t.style.backgroundColor;
 
     let rgb = hexToRgb(t.value);
     let str = rgb.r + "," + rgb.g + "," + rgb.b;

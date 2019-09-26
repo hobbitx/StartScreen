@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Git_Projects\\Take.StartScreen\\Take.StartScreen\\src\\StartScreen\\StartScreen.csproj": {}
+    "D:\\Git_Projects\\Take.StartScreen\\src\\StartScreen\\StartScreen.csproj": {}
   },
   "projects": {
-    "D:\\Git_Projects\\Take.StartScreen\\Take.StartScreen\\src\\StartScreen\\StartScreen.csproj": {
+    "D:\\Git_Projects\\Take.StartScreen\\src\\StartScreen\\StartScreen.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git_Projects\\Take.StartScreen\\Take.StartScreen\\src\\StartScreen\\StartScreen.csproj",
+        "projectUniqueName": "D:\\Git_Projects\\Take.StartScreen\\src\\StartScreen\\StartScreen.csproj",
         "projectName": "StartScreen",
-        "projectPath": "D:\\Git_Projects\\Take.StartScreen\\Take.StartScreen\\src\\StartScreen\\StartScreen.csproj",
+        "projectPath": "D:\\Git_Projects\\Take.StartScreen\\src\\StartScreen\\StartScreen.csproj",
         "packagesPath": "C:\\Users\\robertc\\.nuget\\packages\\",
-        "outputPath": "D:\\Git_Projects\\Take.StartScreen\\Take.StartScreen\\src\\StartScreen\\obj\\",
+        "outputPath": "D:\\Git_Projects\\Take.StartScreen\\src\\StartScreen\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

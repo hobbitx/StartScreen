@@ -8,6 +8,32 @@ html {
     --rgb-color: 200, 200, 200;
 }
 
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn {
+    color: #353D4D;
+    background-color: #0CC8CC;
+    border-radius: 8px;
+    width: 98px;
+    height: 26px;
+    border: #353D4D;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+
 #start-screen.hide {
     display: none;
 }
