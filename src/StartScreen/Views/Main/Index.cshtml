@@ -79,40 +79,118 @@
 
         /* Style the button that is used to open and close the collapsible content */
         .collapsible {
-            background-color: #eee;
-            color: #444;
+            background-color: #3D4657;
+            color: #FAF9F8;
             cursor: pointer;
             padding: 18px;
             width: 100%;
             border: none;
             text-align: left;
             outline: none;
-            font-size: 15px;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 17px;
+            border-radius: 5px;
+            align-items: center;
         }
 
-            /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-            .active, .collapsible:hover {
-                background-color: #ccc;
+            .collapsible:hover {
+                background-color: #4C566A;
             }
 
+        .active {
+            background-color: #4C566A;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            color: #FAF9F8;
+            background-color: #4C566A !important;
+            border: none;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+        .active,.inputsubMenu{
+            background-color: transparent;
+            border: none;
+            color: #fff ;
+            font-weight: bold;
+
+        }
+        
+        .subMenu {
+            background-color: #4C566A;
+            border-radius: 0px;
+            font-weight: bold;
+            color: #FAF9F8;
+            margin-left: 30px;
+            padding-bottom: 15px;
+            padding-left: 10px;
+            padding-top: 15px;
+            margin-bottom: 10px;
+        }
+        .subMenu,.inputsubMenu{
+            color: #fff;
+        }
+        .subMenu:hover  {
+            background-color: #606A7F;
+            border-radius:5px;
+        }
+        
+        .subMenu:hover .inputsubMenu {
+            color: #0CC8CC;
+        }
         /* Style the collapsible content. Note: hidden by default */
         .content {
             padding: 0 10px;
             display: none;
             overflow: hidden;
-            background-color: #f1f1f1;
+            background-color: #4C566A;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
         }
 
         .label {
+            color: #FAF9F8;
+            font-weight: bold;
+        }
+
+        .input_estiled {
+            width: 402px;
+            border: 0;
+            outline: 0;
+            color: #FAF9F8;
+            background: transparent;
+            border-bottom: 1px solid #4C566A;
+            font-size: 14px;
+            font-family: Montserrat;
+            background-color: #353d4d;
+        }
+
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #FAF9F8;
+            opacity: 1; /* Firefox */
+        }
+
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: #FAF9F8;
+        }
+
+        ::-ms-input-placeholder { /* Microsoft Edge */
             color: #FAF9F8;
         }
 
         .Title {
             color: #0CC8CC;
+            font-weight: bold;
         }
     </style>
 
     <title>Document</title>
+
 </head>
 <body style="background-color:#353D4D;">
     <div class="row">
@@ -138,24 +216,36 @@
                         style="width:24px; height:24px; border-radius: 5px;"></button>
                 <br /><br />
                 <br /><br />
-                <br /><br />
-                <br /><br />
 
+                <label class="Title" for="subTitle">NOME DE EXIBIÇÃO </label>
+                <br /><br />
+                <input type="text" id="subTitle" class="input_estiled" placeholder="Central de atendimento do cliente" name="subTitle">
+                <br /><br />
+                <label class="Title" for="helpPhrase">NOME DE EXIBIÇÃO </label>
+                <br /><br />
+                <input type="text" id="helpPhrase" class="input_estiled" placeholder="Como podemos te ajudar?" name="helpPhrase">
+                <br /><br />
+                <br /><br />
+                <label class="Title" for="main">MENU E SUBMENU</label>
+                <br /><br />
+                @foreach (var x in ViewBag.Menus)
+                {
+                    <input type="text" class="collapsible" value="@x.Title" />
+                    <div class="content">
+                        @foreach (var y in @x.Items)
+                        {
+                            <div class="subMenu">
+                                <input class="inputsubMenu" value="@y.Text" />
+                            </div>
 
-                <label for="main">Escolha o texto do menu: </label><input type="text" id="textMenu" name="textMenu">
+                        }
+                    </div>
+                }
                 <br /><br />
-                <label for="menus">Escolha o menu: </label>
-                <select id="selectMenu" name="selectMenu">
-                    @foreach (var x in ViewBag.Menus)
-                    {
-                        <option>@x.Title</option>
-                    }
-                </select>
-                <br /><br />
-                <label for="main">Escolha o texto do submenu: </label><input type="text" id="textSubMenu" name="textSubMenu">
+               
                 <br /><br />
                 <br /><br />
-                <input type="submit" onkeydown="colorSelect(@ViewBag.MainColor)">
+                <input type="submit">
                 <br /><br />
             </form>
         </div>

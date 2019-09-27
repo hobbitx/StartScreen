@@ -10,10 +10,17 @@ function hexToRgb(hex) {
 
 document.addEventListener("DOMContentLoaded", function (event) {
     let color = document.getElementById("main").value;
-    document.body.style.setProperty('--main-color', color);
+    document.body.style.setProperty('--main-color', '#E53153');
     let rgb = hexToRgb(color);
-    let str =  rgb.r + "," + rgb.g + ","+ rgb.b;
-    document.body.style.setProperty('--rgb-color',str );
+    if (rgb != null) {
+        let str = rgb.r + "," + rgb.g + "," + rgb.b;
+        document.body.style.setProperty('--rgb-color', str);
+    }
+    
+    setCollapsible();
+});
+
+function setCollapsible() {
     var coll = document.getElementsByClassName("collapsible");
     var i;
 
@@ -28,8 +35,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
         });
     }
-
-});
+}
 
 function colorSelect(t) {
     document.body.style.setProperty('--main-color', t.style.backgroundColor);

@@ -19,6 +19,7 @@ namespace StartScreen.Controllers
         {
             var itens = new List<ItemMenu>();
             itens.Add(new ItemMenu { Text = "Anime chan" });
+            itens.Add(new ItemMenu { Text = "Anime 2" });
             var menus = new List<Menu>();
             menus.Add(new Menu { Items = itens, Title = "Teste" });
 
