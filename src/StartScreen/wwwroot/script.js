@@ -36,6 +36,22 @@ function setCollapsible() {
         });
     }
 }
+function addMenu() {
+        var txt;
+        var person = prompt("Please enter menu name:", "");
+        if (person == null || person == "") {
+            txt = "User cancelled the prompt.";
+        } else {
+
+            var myInit = {
+                method: 'post',
+                body: person
+            };
+            fetch("/menu", myInit).then(alert("oi"))
+        }
+    
+}
+
 
 function colorSelect(t) {
     document.body.style.setProperty('--main-color', t.style.backgroundColor);

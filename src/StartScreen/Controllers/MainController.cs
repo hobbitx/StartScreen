@@ -56,7 +56,17 @@ namespace StartScreen.Controllers
 
             return View("Index");
         }
+        [HttpPost("menu")]
+        public IActionResult Menu([FromBody] string request)
+        {
+            var menu = new Menu { Title = request, Items = new List<ItemMenu>() };
+            startScreen.Menus.Add(menu);
 
+            ViewBag.Template = GenerateHtml(startScreen);
+            ViewBag.Menus = startScreen.Menus;
+
+            return View("Index");
+        }
         public string GenerateHtml(StartScreenObjects startScreem)
         {
             StringWriter stringWriter = new StringWriter();
