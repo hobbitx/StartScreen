@@ -10,6 +10,7 @@ function hexToRgb(hex) {
 
 document.addEventListener("DOMContentLoaded", function (event) {
     let color = document.getElementById("main").value;
+    
     document.body.style.setProperty('--main-color', '#E53153');
     let rgb = hexToRgb(color);
     if (rgb != null) {

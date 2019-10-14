@@ -18,10 +18,12 @@ namespace StartScreen.Controllers
         public IActionResult Index()
         {
             var itens = new List<ItemMenu>();
-            itens.Add(new ItemMenu { Text = "Anime chan" });
-            itens.Add(new ItemMenu { Text = "Anime 2" });
+            for (int i = 0; i < 5; i++) { itens.Add(new ItemMenu { Text = "XXXX" }); }
+
             var menus = new List<Menu>();
-            menus.Add(new Menu { Items = itens, Title = "Teste" });
+            menus.Add(new Menu { Items = itens, Title = "2ª Via" });
+
+            menus.Add(new Menu { Items = itens, Title = "Menu 2" });
 
             startScreen.Menus = menus;
 
@@ -29,7 +31,7 @@ namespace StartScreen.Controllers
 
             ViewBag.Menus = startScreen.Menus;
             ViewBag.Template = GenerateHtml(startScreen); ;
-            ViewBag.MainColor = "#d0fd0f";
+            ViewBag.MainColor = "#d0e0e3ff";
             return View();
         }
 
@@ -50,7 +52,7 @@ namespace StartScreen.Controllers
 
             }
 
-            ViewBag.Template=GenerateHtml(startScreen);
+            ViewBag.Template = GenerateHtml(startScreen);
             ViewBag.MainColor = request.MainColor;
             ViewBag.Menus = startScreen.Menus;
 
@@ -91,7 +93,8 @@ namespace StartScreen.Controllers
                     writer.RenderBeginTag(HtmlTextWriterTag.Span); // begin span
                     writer.Write(menu.Title);
                     writer.RenderEndTag(); // end span
-                    foreach (ItemMenu item in menu.Items) {
+                    foreach (ItemMenu item in menu.Items)
+                    {
 
                         writer.AddAttribute(HtmlTextWriterAttribute.Class, itemClass);
                         writer.RenderBeginTag(HtmlTextWriterTag.Div); // Begin div
