@@ -37,6 +37,14 @@ function setCollapsible() {
         });
     }
 }
+function helpPhrase(t) {
+    console.log(t.value);
+}
+
+function title(t) {
+    console.log(t.value);
+}
+
 function addMenu() {
         var txt;
         var person = prompt("Please enter menu name:", "");
@@ -48,9 +56,12 @@ function addMenu() {
                 method: 'post',
                 body: person
             };
-            fetch("/menu", myInit).then(alert("oi"))
+            fetch("/menu?title="+person, myInit)
         }
     
+}
+function addSearch() {
+
 }
 
 

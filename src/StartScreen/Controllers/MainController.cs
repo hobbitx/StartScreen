@@ -23,14 +23,18 @@ namespace StartScreen.Controllers
             var menus = new List<Menu>();
             menus.Add(new Menu { Items = itens, Title = "2ª Via" });
 
-            menus.Add(new Menu { Items = itens, Title = "Menu 2" });
+            menus.Add(new Menu { Items = new List<ItemMenu>(), Title = "Menu 1" });
+
+            menus.Add(new Menu { Items = new List<ItemMenu>(), Title = "Menu 2" });
 
             startScreen.Menus = menus;
 
             startScreen.GeneratePayloads();
 
             ViewBag.Menus = startScreen.Menus;
-            ViewBag.Template = GenerateHtml(startScreen); ;
+            ViewBag.Template = GenerateHtml(startScreen);
+            ViewBag.Title = "Central de atendimento do cliente";
+            ViewBag.SubTitle = "Como podemos te ajudar";
             ViewBag.MainColor = "#d0e0e3ff";
             return View();
         }
@@ -59,10 +63,13 @@ namespace StartScreen.Controllers
             return View("Index");
         }
         [HttpPost("menu")]
-        public IActionResult Menu([FromBody] string request)
+        public IActionResult Menu(string title)
         {
-            var menu = new Menu { Title = request, Items = new List<ItemMenu>() };
-            startScreen.Menus.Add(menu);
+            if (!String.IsNullOrEmpty(title))
+            {
+                var menu = new Menu { Title = title.ToString(), Items = new List<ItemMenu>() };
+                startScreen.Menus.Add(menu);
+            }
 
             ViewBag.Template = GenerateHtml(startScreen);
             ViewBag.Menus = startScreen.Menus;
