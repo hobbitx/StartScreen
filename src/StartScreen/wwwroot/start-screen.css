@@ -11,6 +11,7 @@ html {
 .upload-btn-wrapper {
     position: relative;
     overflow: hidden;
+    float: left;
     display: inline-block;
 }
 
@@ -22,6 +23,7 @@ html {
     height: 26px;
     border: #353D4D;
     font-size: 12px;
+    float:inherit;
     font-weight: bold;
 }
 
