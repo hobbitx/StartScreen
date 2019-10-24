@@ -10,6 +10,7 @@ function hexToRgb(hex) {
 
 document.addEventListener("DOMContentLoaded", function (event) {
     let color = document.getElementById("main").value;
+    
     document.body.style.setProperty('--main-color', '#E53153');
     let rgb = hexToRgb(color);
     if (rgb != null) {
@@ -36,6 +37,14 @@ function setCollapsible() {
         });
     }
 }
+function helpPhrase(t) {
+    console.log(t.value);
+}
+
+function title(t) {
+    console.log(t.value);
+}
+
 function addMenu() {
         var txt;
         var person = prompt("Please enter menu name:", "");
@@ -47,9 +56,12 @@ function addMenu() {
                 method: 'post',
                 body: person
             };
-            fetch("/menu", myInit).then(alert("oi"))
+            fetch("/menu?title="+person, myInit)
         }
     
+}
+function addSearch() {
+
 }
 
 

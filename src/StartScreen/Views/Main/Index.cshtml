@@ -140,7 +140,14 @@
             .subMenu:hover {
                 background-color: #606A7F;
                 border-radius: 5px;
+                display: inherit;
             }
+
+                .subMenu:hover .editSubmenu{
+                     display: inherit;
+                } .subMenu:hover .deletSubmenu{
+                     display: inherit;
+                }
 
                 .subMenu:hover .inputsubMenu {
                     color: #0CC8CC;
@@ -188,12 +195,79 @@
         .buttonAdd {
             background: transparent;
             border: 2px solid #0CC8CC;
-            color:#0CC8CC;
+            color: #0CC8CC;
             text-align: center;
             padding: 10px 0px;
             font-weight: bold;
-
             border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .titleMenu {
+            background-color: transparent;
+            color: #FAF9F8;
+            cursor: pointer;
+            padding: 5px;
+            width: 50%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 17px;
+            border-radius: 5px;
+            align-items: center;
+        }
+
+        .buttonSub {
+            background: transparent;
+            border: 0px solid #0CC8CC;
+            color: #0CC8CC;
+            left: auto;
+            text-align: right;
+            width: 30%;
+            padding: 10px 0px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            float: right;
+            padding-right: 10px;
+        }
+
+        .editSubmenu {
+            width: 20px;
+            height: 20px;
+            float: right;
+            background-color: transparent;
+            border: none;
+            margin-left: 10px;
+            margin-right:5px;
+            display: none;
+        }
+        .deletSubmenu{
+            
+            width: 20px;
+            height: 20px;
+            float: right;
+            background-color: transparent;
+            border: none;
+            margin-left: 10px;
+            margin-right:10px;
+            display: none;
+        }
+
+        .upload {
+            background-color: #0CC8CC;
+            float: left;
+            width: 20px;
+            height: 20px;
+            padding-right: 3px;
+            padding-left: 3px;
+            padding-top: 0px !important;
+            padding-bottom: 5px;
+            margin-left: 2px;
         }
 
         .Title {
@@ -217,10 +291,11 @@
             <form action="update" id="form" method="post">
                 <span class="Title">ICONE E COR</span>
                 <br /><br />
-                <div style="text-align:center; width: 240px;">
+                <div style="text-align:center; ">
                     <label class="label" for='selecao-arquivo' style="padding-top:5px; float: left;">Escolha o icone&emsp;</label>
                     <div class="upload-btn-wrapper">
-                        <button class="btn">Adiconar</button>
+
+                        <button class="btn"><img src="~/image/upload-icon.svg" class="upload"></img>Adiconar</button>
                         <input type="file" name="myfile" />
                     </div>
                 </div>
@@ -231,35 +306,46 @@
                 <br /><br />
                 <br /><br />
 
-                <label class="Title" for="subTitle">NOME DE EXIBIÇÃO </label>
+                <label class="Title" for="subTitle">TITULO DE EXIBIÇÃO </label>
                 <br /><br />
-                <input type="text" id="subTitle" class="input_estiled" placeholder="Central de atendimento do cliente" name="subTitle">
+                <input type="text" id="subTitle" onchange="title(this)" class="input_estiled" placeholder="Central de atendimento do cliente" name="subTitle">
                 <br /><br />
-                <label class="Title" for="helpPhrase">NOME DE EXIBIÇÃO </label>
+                <label class="Title" for="helpPhrase">FRASE DE AJUDA</label>
                 <br /><br />
-                <input type="text" id="helpPhrase" class="input_estiled" placeholder="Como podemos te ajudar?" name="helpPhrase">
+                <input type="text" id="helpPhrase" onchange="helpPhrase(this)" class="input_estiled" placeholder="Como podemos te ajudar?" name="helpPhrase">
                 <br /><br />
                 <br /><br />
                 <label class="Title" for="main">MENU E SUBMENU</label>
                 <br /><br />
                 @foreach (var x in ViewBag.Menus)
                 {
-                    <input type="text" class="collapsible" value="@x.Title" />
+                    <div class="collapsible">
+                        <input type="text" class="titleMenu" value="@x.Title" />
+                        <input class="buttonSub" readonly value="+ Add submenu" />
+
+                    </div>
                     <div class="content">
                         @foreach (var y in @x.Items)
                         {
                             <div class="subMenu">
+                                <button class="deletSubmenu"><img src="~/image/del-icon.svg" class="deletSubmenu"></img></button>
+
+                                <button class="editSubmenu"><img src="~/image/edit-icon.svg" class="editSubmenu"></img></button>
                                 <input class="inputsubMenu" value="@y.Text" />
                             </div>
 
                         }
                     </div>
+                    <br />
                 }
+                <br />
+                <div style="    text-align: -webkit-right">
+                    <input class="buttonAdd" onclick="addSearch()" readonly value="+ Add Search" />
+                    <input class="buttonAdd" onclick="addMenu()" readonly value="+ Add Menu" />
+                </div>
                 <br /><br />
-                <input class="buttonAdd" onclick="addMenu()" readonly value="+ Add Menu" />
                 <br /><br />
-                <br /><br />
-                <input type="submit">
+
                 <br /><br />
             </form>
         </div>
@@ -275,6 +361,7 @@
                     </div>
                 </div>
                 <div class="start-screen-content">
+                    <div class="offer-question">@ViewBag.SubTitle</div>
 
                     @Html.Raw(ViewBag.Template)
                 </div>
