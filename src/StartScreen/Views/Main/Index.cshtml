@@ -143,10 +143,12 @@
                 display: inherit;
             }
 
-                .subMenu:hover .editSubmenu{
-                     display: inherit;
-                } .subMenu:hover .deletSubmenu{
-                     display: inherit;
+                .subMenu:hover .editSubmenu {
+                    display: inherit;
+                }
+
+                .subMenu:hover .deletSubmenu {
+                    display: inherit;
                 }
 
                 .subMenu:hover .inputsubMenu {
@@ -243,18 +245,18 @@
             background-color: transparent;
             border: none;
             margin-left: 10px;
-            margin-right:5px;
+            margin-right: 5px;
             display: none;
         }
-        .deletSubmenu{
-            
+
+        .deletSubmenu {
             width: 20px;
             height: 20px;
             float: right;
             background-color: transparent;
             border: none;
             margin-left: 10px;
-            margin-right:10px;
+            margin-right: 10px;
             display: none;
         }
 
@@ -301,7 +303,7 @@
                 </div>
                 <br /><br />
                 <label class="label" for="main">Escolha a cor&emsp;&emsp;</label>
-                <button id="main" name="MainColor" class="jscolor {valueElement:null,value:'@ViewBag.MainColor'}"
+                <button id="main" name="MainColor" class="jscolor {valueElement:'#000000',value:'var(--main-color)'}"
                         style="width:24px; height:24px; border-radius: 5px;"></button>
                 <br /><br />
                 <br /><br />
@@ -329,7 +331,7 @@
                         {
                             <div class="subMenu">
                                 <button class="deletSubmenu"><img src="~/image/del-icon.svg" class="deletSubmenu"></img></button>
-                                <button class="editSubmenu" ><img src="~/image/edit-icon.svg" class="editSubmenu"></img></button>
+                                <button class="editSubmenu"><img src="~/image/edit-icon.svg" class="editSubmenu"></img></button>
                                 <input class="inputsubMenu" value="@y.Text" />
                             </div>
 
@@ -339,8 +341,10 @@
                 }
                 <br />
                 <div style="    text-align: -webkit-right">
-                    <input class="buttonAdd" onclick="addSearch()" readonly value="+ Add Search" />
-                    <input class="buttonAdd" onclick="addMenu()" readonly value="+ Add Menu" />
+
+                    <button type="button" class="buttonAdd" onclick="location.href='@Url.Action("faq", "Main")'" >+ Add Search </button>
+                    <button type="button"  class="buttonAdd" onclick="location.href='@Url.Action("menu", "Main")'">+ Add Menu</button> 
+
                 </div>
                 <br /><br />
                 <br /><br />

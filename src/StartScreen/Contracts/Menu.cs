@@ -11,5 +11,7 @@ namespace StartScreen.Contracts
 
         public List<ItemMenu> Items { get; set; }
 
+        public bool isFaq { get; set; }
+
     }
 }

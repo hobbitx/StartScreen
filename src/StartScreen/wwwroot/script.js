@@ -10,8 +10,8 @@ function hexToRgb(hex) {
 
 document.addEventListener("DOMContentLoaded", function (event) {
     let color = document.getElementById("main").value;
+    document.body.style.setProperty('--main-color', '#000000');
     
-    document.body.style.setProperty('--main-color', '#E53153');
     let rgb = hexToRgb(color);
     if (rgb != null) {
         let str = rgb.r + "," + rgb.g + "," + rgb.b;
@@ -43,33 +43,4 @@ function helpPhrase(t) {
 
 function title(t) {
     console.log(t.value);
-}
-
-function addMenu() {
-        var txt;
-        var person = prompt("Please enter menu name:", "");
-        if (person == null || person == "") {
-            txt = "User cancelled the prompt.";
-        } else {
-
-            var myInit = {
-                method: 'post',
-                body: person
-            };
-            fetch("/menu?title="+person, myInit)
-        }
-    
-}
-function addSearch() {
-
-}
-
-
-function colorSelect(t) {
-    document.body.style.setProperty('--main-color', t.style.backgroundColor);
-    document.getElementById("main").value = t.style.backgroundColor;
-
-    let rgb = hexToRgb(t.value);
-    let str = rgb.r + "," + rgb.g + "," + rgb.b;
-    document.body.style.setProperty('--rgb-color', str);
 }
