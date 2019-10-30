@@ -1112,12 +1112,25 @@ if (!window.jscolor) {
                             var bgColor = '#' + this.toString();
                             var fgColor = this.isLight() ? '#000' : '#FFF';
 
-                            this.styleElement.style.backgroundImage = 'none';
-                            this.styleElement.style.backgroundColor = bgColor;
-                            document.body.style.setProperty('--main-color', bgColor);
-                            sessionStorage.setItem("mainColor", bgColor);
 
-                            this.styleElement.style.color = fgColor;
+                            if (sessionStorage.getItem("update") == "true") {
+                                var color = sessionStorage.getItem("mainColor");
+                                console.log(color);
+                                if (!color) {
+                                    color = "#000000"
+                                }
+                                this.styleElement.style.backgroundColor = color;
+                                document.body.style.setProperty('--main-color', color);
+                                sessionStorage.setItem("update", "false");
+                            } else {
+                                this.styleElement.style.backgroundImage = 'none';
+                                this.styleElement.style.backgroundColor = bgColor;
+                                document.body.style.setProperty('--main-color', bgColor);
+                                sessionStorage.setItem("mainColor", bgColor);
+                                this.styleElement.style.color = fgColor;
+                            }
+
+                           
 
                             if (this.overwriteImportant) {
                                 this.styleElement.setAttribute('style',

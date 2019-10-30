@@ -106,9 +106,19 @@ namespace StartScreen.Controllers
                 {
                     if (menu.isFaq)
                     {
+
+                        writer.AddAttribute(HtmlTextWriterAttribute.Class, menuClass);
+                        writer.RenderBeginTag(HtmlTextWriterTag.Div); // Begin #1
+                        writer.AddAttribute(HtmlTextWriterAttribute.Class, spanClass);
+                        writer.RenderBeginTag(HtmlTextWriterTag.Span); // begin span
+                        writer.Write(menu.Title);
+
+                        writer.RenderEndTag(); // end input
+                        writer.RenderEndTag(); // end input
                         writer.AddAttribute(HtmlTextWriterAttribute.Class, "ask-question-section");
                         writer.RenderBeginTag(HtmlTextWriterTag.Div); // Begin #1
 
+                       
 
                         writer.AddAttribute("id", "question-input");
                         writer.AddAttribute("value", "");

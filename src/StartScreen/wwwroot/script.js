@@ -11,7 +11,7 @@ function hexToRgb(hex) {
 document.addEventListener("DOMContentLoaded", function (event) {
     let color = document.getElementById("main").value;
     document.body.style.setProperty('--main-color', '#000000');
-    
+    sessionStorage.setItem("update", "true");
     let rgb = hexToRgb(color);
     if (rgb != null) {
         let str = rgb.r + "," + rgb.g + "," + rgb.b;
