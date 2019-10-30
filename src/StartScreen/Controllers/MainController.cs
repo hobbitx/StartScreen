@@ -19,55 +19,63 @@ namespace StartScreen.Controllers
         public IActionResult Index()
         {
             var itens = new List<ItemMenu>();
-            for (int i = 0; i < 5; i++) { itens.Add(new ItemMenu { Text = "XXXX" }); }
+            for (int i = 0; i < 5; i++) { 
+                itens.Add(new ItemMenu { Id = i, Text = "XXXX" }); 
+            }
 
             var menus = new List<Menu>();
-            menus.Add(new Menu { Items = itens, Title = "2ª Via" });
+            menus.Add(new Menu { Id = 0, Items = itens, Title = "2ª Via" });
 
-            menus.Add(new Menu { Items = new List<ItemMenu>(), Title = "Menu 1" });
+            menus.Add(new Menu { Id = 1, Items = new List<ItemMenu>(), Title = "Menu 1" });
 
-            menus.Add(new Menu { Items = new List<ItemMenu>(), Title = "Menu 2" });
+            menus.Add(new Menu { Id = 2, Items = new List<ItemMenu>(), Title = "Menu 2" });
 
             startScreen.Menus = menus;
 
-            startScreen.GeneratePayloads();
 
             ViewBag.Menus = startScreen.Menus;
             ViewBag.Template = GenerateHtml(startScreen);
             ViewBag.Title = "Central de atendimento do cliente";
             ViewBag.SubTitle = "Como podemos te ajudar";
             ViewBag.MainColor = "#d0e0e3ff";
-            
+
             return View();
         }
-
-        [HttpPost("update")]
-        public IActionResult Generate([FromForm] StartScreenObjects request)
+        [HttpGet("submenu")]
+        public IActionResult Submenu(int id)
         {
-            if (!String.IsNullOrEmpty(request.TextSubMenu))
-            {
-                var item = new ItemMenu { Text = request.TextSubMenu };
-                item.SetPayload();
-                startScreen.Menus.Where(x => x.Title.Equals(request.SelectMenu)).FirstOrDefault().Items.Add(item);
-            }
-            else
-            {
-                var menu = new Menu { Title = request.TextMenu, Items = new List<ItemMenu>() };
-                startScreen.Menus.Add(menu);
-
-            }
-
+            int count = startScreen.Menus.ElementAt(id).Items.Count;
+            startScreen.Menus.ElementAt(id).Items.Add(new ItemMenu { Id=count, Text = "Submenu" });
             ViewBag.Template = GenerateHtml(startScreen);
-            ViewBag.MainColor = request.MainColor;
             ViewBag.Menus = startScreen.Menus;
 
             return View("Index");
         }
+        [HttpGet("deletesubmenu")]
+        public IActionResult DeleteSubMenu(int id,int menuId)
+        {
+            startScreen.Menus.ElementAt(menuId).Items.RemoveAt(id);
+            ViewBag.Template = GenerateHtml(startScreen);
+            ViewBag.Menus = startScreen.Menus;
+
+            return View("Index");
+        }
+        [HttpGet("deletemenu")]
+        public IActionResult DeleteMenu(int id)
+        {
+           
+            startScreen.Menus.RemoveAt(id);
+            ViewBag.Template = GenerateHtml(startScreen);
+            ViewBag.Menus = startScreen.Menus;
+
+            return View("Index");
+        }
+
         [HttpGet("menu")]
         public IActionResult Menu()
         {
             int count = startScreen.Menus.Count;
-            var menu = new Menu { Title = "Menu " + count, Items = new List<ItemMenu>() };
+            var menu = new Menu { Id = count , Title = "Menu " + count, Items = new List<ItemMenu>() };
             startScreen.Menus.Add(menu);
             ViewBag.Template = GenerateHtml(startScreen);
             ViewBag.Menus = startScreen.Menus;
@@ -77,7 +85,8 @@ namespace StartScreen.Controllers
         [HttpGet("faq")]
         public IActionResult Faq()
         {
-            var menu = new Menu { Title = "FAQ ", isFaq = true, Items = new List<ItemMenu>() };
+            int count = startScreen.Menus.Count;
+            var menu = new Menu { Id = count + 1,Title = "FAQ ", isFaq = true, Items = new List<ItemMenu>() };
             startScreen.Menus.Add(menu);
             ViewBag.Template = GenerateHtml(startScreen);
             ViewBag.Menus = startScreen.Menus;
@@ -86,6 +95,8 @@ namespace StartScreen.Controllers
         }
         public string GenerateHtml(StartScreenObjects startScreem)
         {
+
+            startScreem.GeneratePayloads();
             StringWriter stringWriter = new StringWriter();
             var menuClass = "subjects-box";
             var spanClass = "subject-phrase";
@@ -118,7 +129,7 @@ namespace StartScreen.Controllers
                         writer.AddAttribute(HtmlTextWriterAttribute.Class, "ask-question-section");
                         writer.RenderBeginTag(HtmlTextWriterTag.Div); // Begin #1
 
-                       
+
 
                         writer.AddAttribute("id", "question-input");
                         writer.AddAttribute("value", "");

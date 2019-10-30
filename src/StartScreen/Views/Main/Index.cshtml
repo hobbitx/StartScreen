@@ -100,6 +100,15 @@
             .collapsible:hover {
                 background-color: #4C566A;
             }
+            
+            .collapsible:hover .editMenu {
+                display: inherit;
+                border: 0px;
+            }
+            .collapsible:hover .deletMenu {
+                display: inherit;
+                border: 0px;
+            }
 
         .active {
             background-color: #4C566A;
@@ -114,12 +123,9 @@
             font-weight: bold;
         }
 
-        .active, .inputsubMenu {
-            background-color: transparent;
-            border: none;
-            color: #fff;
-            font-weight: bold;
-        }
+            .active .buttonSub {
+                display: inherit;
+            }
 
         .subMenu {
             background-color: #4C566A;
@@ -181,6 +187,11 @@
             background-color: #353d4d;
         }
 
+            .input_estiled::placeholder {
+                color: #FFFFFF;
+                opacity: 1; /* Firefox */
+            }
+
         ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
             color: rgba(0,0,0,1);
             opacity: 1; /* Firefox */
@@ -235,6 +246,7 @@
             font-weight: bold;
             cursor: pointer;
             border-radius: 5px;
+            display: none;
             float: right;
             padding-right: 10px;
         }
@@ -259,6 +271,31 @@
             margin-left: 10px;
             margin-right: 10px;
             display: none;
+        }
+
+        .editMenu {
+            width: 20px;
+            height: 20px;
+            float: right;
+            background-color: transparent;
+            margin-left: 10px;
+            margin-right: 5px;
+            display: none;
+        }
+
+        .deletMenu {
+            width: 20px;
+            height: 20px;
+            float: right;
+            background-color: transparent;
+            margin-left: 10px;
+            margin-right: 10px;
+            display: none;
+        }
+
+        .inputsubMenu {
+            background-color: transparent;
+            border: 0px;
         }
 
         .upload {
@@ -324,16 +361,18 @@
                 {
                     <div class="collapsible">
                         <input type="text" class="titleMenu" value="@x.Title" />
-                        <input class="buttonSub" readonly value="+ Add submenu" />
+                        <input class="buttonSub" onclick="location.href='@Url.Action("submenu", "Main",new { id = x.Id })'" readonly value="+ Add submenu" />
+                        <button type="button" onclick="location.href='@Url.Action("deletemenu", "Main",new { id = x.Id })'" class="deletMenu"><img src="~/image/del-icon.svg" class="deletMenu"></img></button>
+                        <button type="button" onclick="" class="editMenu"><img src="~/image/edit-icon.svg" class="editMenu" /></button>
 
                     </div>
                     <div class="content">
                         @foreach (var y in @x.Items)
                         {
-                            <div class="subMenu">
-                                <button class="deletSubmenu"><img src="~/image/del-icon.svg" class="deletSubmenu"></img></button>
-                                <button class="editSubmenu"><img src="~/image/edit-icon.svg" class="editSubmenu"></img></button>
-                                <input class="inputsubMenu" value="@y.Text" />
+                            <div class="subMenu" id="@y.Id">
+                                <button type="button" onclick="location.href='@Url.Action("deletesubmenu", "Main",new { id = y.Id ,menuId=x.Id})'" class="deletSubmenu"><img src="~/image/del-icon.svg" class="deletSubmenu"></img></button>
+                                <button type="button" onclick="this." class="editSubmenu"><img src="~/image/edit-icon.svg" class="editSubmenu"/></button>
+                                <input id="input_submenu_@y.Id" class="inputsubMenu" value="@y.Text" />
                             </div>
 
                         }
@@ -343,8 +382,8 @@
                 <br />
                 <div style="    text-align: -webkit-right">
 
-                    <button type="button" class="buttonAdd" onclick="location.href='@Url.Action("faq", "Main")'" >+ Add Search </button>
-                    <button type="button"  class="buttonAdd" onclick="location.href='@Url.Action("menu", "Main")'">+ Add Menu</button> 
+                    <button type="button" class="buttonAdd" onclick="location.href='@Url.Action("faq", "Main")'">+ Add Search </button>
+                    <button type="button" class="buttonAdd" onclick="location.href='@Url.Action("menu", "Main")'">+ Add Menu</button>
 
                 </div>
                 <br /><br />
