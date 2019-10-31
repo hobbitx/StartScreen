@@ -19,8 +19,10 @@ function changeTitle(event) {
     let x = document.getElementById("greeting-phrase");
     fetch("/Offer?offerquestion=" + event.value)
         .then(function (response) {
-        x.innerHTML = event.value;
-    });
+            x.innerHTML = event.value;
+        });
+
+    sessionStorage.setItem("Title",event.value);
 }
 
 function changeOffer(event) {
@@ -41,7 +43,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
         let str = rgb.r + "," + rgb.g + "," + rgb.b;
         document.body.style.setProperty('--rgb-color', str);
     }
-    
+    if (sessionStorage.getItem("Title") != null) {
+        let x = document.getElementById("subTitle");
+        x.value = sessionStorage.getItem("Title");
+        let y = document.getElementById("greeting-phrase");
+        y.innerHTML = sessionStorage.getItem("Title");
+    }
     setCollapsible();
 });
 
