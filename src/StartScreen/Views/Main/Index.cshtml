@@ -43,13 +43,13 @@
                 <br /><br />
                 <br /><br />
 
-                <label class="Title" for="subTitle">TITULO DE EXIBIÇÃO </label>
+                <label class="Title" for="Title">TITULO DE EXIBIÇÃO </label>
                 <br /><br />
-                <input type="text" id="subTitle" oninput="changeTitle(this)" class="input_estiled" placeholder="Central de atendimento do cliente" name="subTitle" >
+                <input type="text" id="Title" oninput="changeTitle(this)" class="input_estiled" placeholder="Central de atendimento do cliente" name="Title" >
                 <br /><br />
-                <label class="Title" for="helpPhrase">FRASE DE AJUDA</label>
+                <label class="Title" for="OfferQuestion">FRASE DE AJUDA</label>
                 <br /><br />
-                <input type="text" id="helpPhrase" oninput="changeOffer(this)" class="input_estiled" placeholder="Como podemos te ajudar?" name="helpPhrase">
+                <input type="text" id="OfferQuestion" oninput="changeOffer(this)" class="input_estiled" placeholder="Como podemos te ajudar?" name="OfferQuestion">
                 <br /><br />
                 <br /><br />
                 <label class="Title" for="main">MENU E SUBMENU</label>
@@ -68,7 +68,7 @@
                         {
                             <div class="subMenu" id="@y.Id">
                                 <button type="button" onclick="location.href='@Url.Action("deletesubmenu", "Main",new { id = y.Id ,menuId=x.Id})'" class="deletSubmenu"><img src="~/image/del-icon.svg" class="deletSubmenu"></img></button>
-                                <button type="button" onclick="this." class="editSubmenu"><img src="~/image/edit-icon.svg" class="editSubmenu" /></button>
+                                <button type="button" onclick="document.getElementById(@x.Id @y.Id).focus()" class="editSubmenu"><img src="~/image/edit-icon.svg" class="editSubmenu" /></button>
                                 <input id="@x.Id @y.Id" oninput="changeSubmenu(this)" class="inputsubMenu" value="@y.Text" />
                             </div>
 

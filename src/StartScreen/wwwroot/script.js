@@ -31,7 +31,9 @@ function changeOffer(event) {
     fetch("/Title?title=" + event.value)
         .then(function (response) {
             x.innerHTML = event.value;
-        });
+        }); 
+
+    sessionStorage.setItem("Offer", event.value);
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -44,9 +46,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
         document.body.style.setProperty('--rgb-color', str);
     }
     if (sessionStorage.getItem("Title") != null) {
-        let x = document.getElementById("subTitle");
+        let x = document.getElementById("Title");
         x.value = sessionStorage.getItem("Title");
         let y = document.getElementById("greeting-phrase");
+        y.innerHTML = sessionStorage.getItem("Title");
+    }
+
+    if (sessionStorage.getItem("Offer") != null) {
+        let x = document.getElementById("OfferQuestion");
+        x.value = sessionStorage.getItem("Offer");
+        let y = document.getElementById("offer-question");
         y.innerHTML = sessionStorage.getItem("Title");
     }
     setCollapsible();
