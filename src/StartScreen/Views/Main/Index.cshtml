@@ -1,321 +1,18 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="./start-screen.css" rel="stylesheet" />
-    <script src="~/script.js" type="text/javascript"></script>
+    <link href="~/home.css" rel="stylesheet" />
+
+    <script src="~/script.js"></script>
     <script src="~/jscolors.js"></script>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: Montserrat;
-        }
-
-        .body {
-            background-color: #6F6F6F;
-        }
-        /* Create two equal columns that floats next to each other */
-        .column-1 {
-            float: left;
-            padding-right: 10px;
-            padding-left: 20px;
-            width: 40%;
-            height: 100%; /* Should be removed. Only for demonstration */
-            background-color: #353D4D;
-        }
-
-        .column-2 {
-            float: left;
-            padding-right: 10px;
-            width: 60%;
-            height: 100%; /* Should be removed. Only for demonstration */
-            background-color: #6F6F6F;
-        }
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        input.file {
-            width: 150px;
-            height: 20px;
-            border: 1px solid #BBB;
-            border-right: 0;
-            color: #888;
-            padding: 5px;
-            -webkit-border-top-left-radius: 5px;
-            -webkit-border-bottom-left-radius: 5px;
-            -moz-border-radius-topleft: 5px;
-            -moz-border-radius-bottomleft: 5px;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-            outline: none;
-        }
-
-        .dropdown-menu {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-item {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            padding: 12px 16px;
-            z-index: 1;
-        }
-
-        .dropdown:hover .dropdown-item {
-            display: block;
-        }
-
-        /* Style the button that is used to open and close the collapsible content */
-        .collapsible {
-            background-color: #3D4657;
-            color: #FAF9F8;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-family: Montserrat;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 14px;
-            line-height: 17px;
-            border-radius: 5px;
-            align-items: center;
-        }
-
-            .collapsible:hover {
-                background-color: #4C566A;
-            }
-            
-            .collapsible:hover .editMenu {
-                display: inherit;
-                border: 0px;
-            }
-            .collapsible:hover .deletMenu {
-                display: inherit;
-                border: 0px;
-            }
-
-        .active {
-            background-color: #4C566A;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            border-bottom-left-radius: 0px;
-            border-bottom-right-radius: 0px;
-            color: #FAF9F8;
-            background-color: #4C566A !important;
-            border: none;
-            color: #FFFFFF;
-            font-weight: bold;
-        }
-
-            .active .buttonSub {
-                display: inherit;
-            }
-
-        .subMenu {
-            background-color: #4C566A;
-            border-radius: 0px;
-            font-weight: bold;
-            color: #FAF9F8;
-            margin-left: 30px;
-            padding-bottom: 15px;
-            padding-left: 10px;
-            padding-top: 15px;
-            margin-bottom: 10px;
-        }
-
-        .subMenu, .inputsubMenu {
-            color: #fff;
-        }
-
-            .subMenu:hover {
-                background-color: #606A7F;
-                border-radius: 5px;
-                display: inherit;
-            }
-
-                .subMenu:hover .editSubmenu {
-                    display: inherit;
-                }
-
-                .subMenu:hover .deletSubmenu {
-                    display: inherit;
-                }
-
-                .subMenu:hover .inputsubMenu {
-                    color: #0CC8CC;
-                }
-        /* Style the collapsible content. Note: hidden by default */
-        .content {
-            padding: 0 10px;
-            display: none;
-            overflow: hidden;
-            background-color: #4C566A;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-        }
-
-        .label {
-            color: #FAF9F8;
-            font-weight: bold;
-        }
-
-        .input_estiled {
-            width: 402px;
-            border: 0;
-            outline: 0;
-            color: #FAF9F8;
-            background: transparent;
-            border-bottom: 1px solid #4C566A;
-            font-size: 14px;
-            font-family: Montserrat;
-            background-color: #353d4d;
-        }
-
-            .input_estiled::placeholder {
-                color: #FFFFFF;
-                opacity: 1; /* Firefox */
-            }
-
-        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: rgba(0,0,0,1);
-            opacity: 1; /* Firefox */
-        }
-
-        :-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color: #FAF9F8;
-        }
-
-        ::-ms-input-placeholder { /* Microsoft Edge */
-            color: #FAF9F8;
-        }
-
-        .buttonAdd {
-            background: transparent;
-            border: 2px solid #0CC8CC;
-            color: #0CC8CC;
-            text-align: center;
-            padding: 10px 0px;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .titleMenu {
-            background-color: transparent;
-            color: #FAF9F8;
-            cursor: pointer;
-            padding: 5px;
-            width: 50%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-family: Montserrat;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 14px;
-            line-height: 17px;
-            border-radius: 5px;
-            align-items: center;
-        }
-
-        .buttonSub {
-            background: transparent;
-            border: 0px solid #0CC8CC;
-            color: #0CC8CC;
-            left: auto;
-            text-align: right;
-            width: 30%;
-            padding: 10px 0px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 5px;
-            display: none;
-            float: right;
-            padding-right: 10px;
-        }
-
-        .editSubmenu {
-            width: 20px;
-            height: 20px;
-            float: right;
-            background-color: transparent;
-            border: none;
-            margin-left: 10px;
-            margin-right: 5px;
-            display: none;
-        }
-
-        .deletSubmenu {
-            width: 20px;
-            height: 20px;
-            float: right;
-            background-color: transparent;
-            border: none;
-            margin-left: 10px;
-            margin-right: 10px;
-            display: none;
-        }
-
-        .editMenu {
-            width: 20px;
-            height: 20px;
-            float: right;
-            background-color: transparent;
-            margin-left: 10px;
-            margin-right: 5px;
-            display: none;
-        }
-
-        .deletMenu {
-            width: 20px;
-            height: 20px;
-            float: right;
-            background-color: transparent;
-            margin-left: 10px;
-            margin-right: 10px;
-            display: none;
-        }
-
-        .inputsubMenu {
-            background-color: transparent;
-            border: 0px;
-        }
-
-        .upload {
-            background-color: #0CC8CC;
-            float: left;
-            width: 20px;
-            height: 20px;
-            padding-right: 3px;
-            padding-left: 3px;
-            padding-top: 0px !important;
-            padding-bottom: 5px;
-            margin-left: 2px;
-        }
-
-        .Title {
-            color: #0CC8CC;
-            font-weight: bold;
-            font-family: Montserrat;
-        }
-    </style>
 
     <title>Document</title>
 
@@ -348,11 +45,11 @@
 
                 <label class="Title" for="subTitle">TITULO DE EXIBIÇÃO </label>
                 <br /><br />
-                <input type="text" id="subTitle" onchange="title(this)" class="input_estiled" placeholder="Central de atendimento do cliente" name="subTitle">
+                <input type="text" id="subTitle" oninput="changeTitle(this)" class="input_estiled" placeholder="Central de atendimento do cliente" name="subTitle">
                 <br /><br />
                 <label class="Title" for="helpPhrase">FRASE DE AJUDA</label>
                 <br /><br />
-                <input type="text" id="helpPhrase" onchange="helpPhrase(this)" class="input_estiled" placeholder="Como podemos te ajudar?" name="helpPhrase">
+                <input type="text" id="helpPhrase" oninput="changeOffer(this)" class="input_estiled" placeholder="Como podemos te ajudar?" name="helpPhrase">
                 <br /><br />
                 <br /><br />
                 <label class="Title" for="main">MENU E SUBMENU</label>
@@ -363,7 +60,7 @@
                         <input type="text" class="titleMenu" value="@x.Title" />
                         <input class="buttonSub" onclick="location.href='@Url.Action("submenu", "Main",new { id = x.Id })'" readonly value="+ Add submenu" />
                         <button type="button" onclick="location.href='@Url.Action("deletemenu", "Main",new { id = x.Id })'" class="deletMenu"><img src="~/image/del-icon.svg" class="deletMenu"></img></button>
-                        <button type="button" onclick="" class="editMenu"><img src="~/image/edit-icon.svg" class="editMenu" /></button>
+                        <button type="button" class="editMenu"><img src="~/image/edit-icon.svg" class="editMenu" /></button>
 
                     </div>
                     <div class="content">
@@ -371,8 +68,8 @@
                         {
                             <div class="subMenu" id="@y.Id">
                                 <button type="button" onclick="location.href='@Url.Action("deletesubmenu", "Main",new { id = y.Id ,menuId=x.Id})'" class="deletSubmenu"><img src="~/image/del-icon.svg" class="deletSubmenu"></img></button>
-                                <button type="button" onclick="this." class="editSubmenu"><img src="~/image/edit-icon.svg" class="editSubmenu"/></button>
-                                <input id="input_submenu_@y.Id" class="inputsubMenu" value="@y.Text" />
+                                <button type="button" onclick="this." class="editSubmenu"><img src="~/image/edit-icon.svg" class="editSubmenu" /></button>
+                                <input id="@x.Id @y.Id" oninput="changeSubmenu(this)" class="inputsubMenu" value="@y.Text" />
                             </div>
 
                         }
@@ -393,26 +90,22 @@
             </form>
         </div>
         <div class="column-2">
-            <div id="start-screen" style="width: inherit ">
+            <div id="start-screen" class="start-screen">
                 <div class="top-section">
                     <div class="top-icon">
                         <img src="image/fiat_icon.svg" alt="" />
                     </div>
-                    <div class="greeting-phrase">@ViewBag.Title</div>
+                    <div class="greeting-phrase" id="greeting-phrase">@ViewBag.Title</div>
                     <div class="close-button">
                         <img close-start-screen="true" src="image/close_button.svg" alt="" />
                     </div>
                 </div>
                 <div class="start-screen-content">
-                    <div class="offer-question">@ViewBag.SubTitle</div>
+                    <div class="offer-question" id="offer-question">@ViewBag.SubTitle</div>
 
                     @Html.Raw(ViewBag.Template)
                 </div>
-                <div id="bottom-section" rel="bookmark">
-                    <div class="bottom-content">
-                        <img src="image/vector.svg" class="scroll-image"><span class="scroll-phrase">DESLIZE PARA MAIS OPÇÕES</span>
-                    </div>
-                </div>
+
             </div>
         </div>
 

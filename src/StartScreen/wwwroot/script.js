@@ -1,11 +1,35 @@
 
 function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    console.log("passou");
     return result ? {
         r: parseInt(result[1], 16),
         g: parseInt(result[2], 16),
         b: parseInt(result[3], 16)
     } : null;
+}
+
+
+function changeSubmenu(event) {
+
+    console.log(event.id);
+}
+function changeTitle(event) {
+
+    let x = document.getElementById("greeting-phrase");
+    fetch("/Offer?offerquestion=" + event.value)
+        .then(function (response) {
+        x.innerHTML = event.value;
+    });
+}
+
+function changeOffer(event) {
+
+    let x = document.getElementById("offer-question");
+    fetch("/Title?title=" + event.value)
+        .then(function (response) {
+            x.innerHTML = event.value;
+        });
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -36,11 +60,4 @@ function setCollapsible() {
             }
         });
     }
-}
-function helpPhrase(t) {
-    console.log(t.value);
-}
-
-function title(t) {
-    console.log(t.value);
 }
