@@ -114,10 +114,19 @@ input.file {
     color: #FFFFFF;
     font-weight: bold;
 }
-
     .active .buttonSub {
         display: inherit;
     }
+
+.active .editMenu {
+    display: none !important;
+    border: 0px;
+}
+
+.active .deletMenu {
+    display: none !important;
+    border: 0px;
+}
 
 .subMenu {
     background-color: #4C566A;

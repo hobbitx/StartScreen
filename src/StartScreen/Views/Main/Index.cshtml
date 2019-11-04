@@ -57,7 +57,7 @@
                 @foreach (var x in ViewBag.Menus)
                 {
                     <div class="collapsible">
-                        <input type="text" class="titleMenu" value="@x.Title" />
+                        <input type="text" class="titleMenu" id="menu_@x.Id" oninput="changeTitleMenu(this)" value="@x.Title" />
                         <input class="buttonSub" onclick="location.href='@Url.Action("submenu", "Main",new { id = x.Id })'" readonly value="+ Add submenu" />
                         <button type="button" onclick="location.href='@Url.Action("deletemenu", "Main",new { id = x.Id })'" class="deletMenu"><img src="~/image/del-icon.svg" class="deletMenu"></img></button>
                         <button type="button" class="editMenu"><img src="~/image/edit-icon.svg" class="editMenu" /></button>

@@ -66,6 +66,7 @@ namespace StartScreen.Service
                         writer.AddAttribute(HtmlTextWriterAttribute.Class, menuClass);
                         writer.RenderBeginTag(HtmlTextWriterTag.Div); // Begin #1
                         writer.AddAttribute(HtmlTextWriterAttribute.Class, spanClass);
+                        writer.AddAttribute(HtmlTextWriterAttribute.Id, "menus_"+menu.Id.ToString());
                         writer.RenderBeginTag(HtmlTextWriterTag.Span); // begin span
                         writer.Write(menu.Title);
                         writer.RenderEndTag(); // end span
@@ -77,6 +78,7 @@ namespace StartScreen.Service
 
                             writer.AddAttribute("payload", item.Payload);
                             writer.RenderBeginTag(HtmlTextWriterTag.Span);//begin span
+                            writer.AddAttribute(HtmlTextWriterAttribute.Id, menu.Id.ToString()+"_"+item.Id.ToString());
                             writer.Write(item.Text.ToUpper());
                             writer.RenderEndTag(); // end span
                             writer.RenderEndTag(); // end div

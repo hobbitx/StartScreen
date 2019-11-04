@@ -25,6 +25,19 @@ function changeTitle(event) {
     sessionStorage.setItem("Title",event.value);
 }
 
+
+function changeTitleMenu(event) {
+
+   
+    let k = event.id.substring(0, 4) + "s" + event.id.substring(4);
+    console.log(k);
+    let x = document.getElementById(k);
+    x.innerText = event.value;
+
+    console.log(event.id);
+   
+}
+
 function changeOffer(event) {
 
     let x = document.getElementById("offer-question");
