@@ -1,6 +1,7 @@
 
 function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    console.log("passou");
     return result ? {
         r: parseInt(result[1], 16),
         g: parseInt(result[2], 16),
@@ -8,16 +9,68 @@ function hexToRgb(hex) {
     } : null;
 }
 
+
+function changeSubmenu(event) {
+
+    console.log(event.id);
+}
+function changeTitle(event) {
+
+    let x = document.getElementById("greeting-phrase");
+    fetch("/Offer?offerquestion=" + event.value)
+        .then(function (response) {
+            x.innerHTML = event.value;
+        });
+
+    sessionStorage.setItem("Title",event.value);
+}
+
+
+function changeTitleMenu(event) {
+
+   
+    let k = event.id.substring(0, 4) + "s" + event.id.substring(4);
+    console.log(k);
+    let x = document.getElementById(k);
+    x.innerText = event.value;
+
+    console.log(event.id);
+   
+}
+
+function changeOffer(event) {
+
+    let x = document.getElementById("offer-question");
+    fetch("/Title?title=" + event.value)
+        .then(function (response) {
+            x.innerHTML = event.value;
+        }); 
+
+    sessionStorage.setItem("Offer", event.value);
+}
+
 document.addEventListener("DOMContentLoaded", function (event) {
     let color = document.getElementById("main").value;
-    
-    document.body.style.setProperty('--main-color', '#E53153');
+    document.body.style.setProperty('--main-color', '#000000');
+    sessionStorage.setItem("update", "true");
     let rgb = hexToRgb(color);
     if (rgb != null) {
         let str = rgb.r + "," + rgb.g + "," + rgb.b;
         document.body.style.setProperty('--rgb-color', str);
     }
-    
+    if (sessionStorage.getItem("Title") != null) {
+        let x = document.getElementById("Title");
+        x.value = sessionStorage.getItem("Title");
+        let y = document.getElementById("greeting-phrase");
+        y.innerHTML = sessionStorage.getItem("Title");
+    }
+
+    if (sessionStorage.getItem("Offer") != null) {
+        let x = document.getElementById("OfferQuestion");
+        x.value = sessionStorage.getItem("Offer");
+        let y = document.getElementById("offer-question");
+        y.innerHTML = sessionStorage.getItem("Title");
+    }
     setCollapsible();
 });
 
@@ -36,40 +89,4 @@ function setCollapsible() {
             }
         });
     }
-}
-function helpPhrase(t) {
-    console.log(t.value);
-}
-
-function title(t) {
-    console.log(t.value);
-}
-
-function addMenu() {
-        var txt;
-        var person = prompt("Please enter menu name:", "");
-        if (person == null || person == "") {
-            txt = "User cancelled the prompt.";
-        } else {
-
-            var myInit = {
-                method: 'post',
-                body: person
-            };
-            fetch("/menu?title="+person, myInit)
-        }
-    
-}
-function addSearch() {
-
-}
-
-
-function colorSelect(t) {
-    document.body.style.setProperty('--main-color', t.style.backgroundColor);
-    document.getElementById("main").value = t.style.backgroundColor;
-
-    let rgb = hexToRgb(t.value);
-    let str = rgb.r + "," + rgb.g + "," + rgb.b;
-    document.body.style.setProperty('--rgb-color', str);
 }

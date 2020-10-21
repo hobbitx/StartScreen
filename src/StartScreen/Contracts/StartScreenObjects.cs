@@ -17,9 +17,9 @@ namespace StartScreen.Contracts
 
         public string SelectMenu { get; set; }
 
-        public string TextMenu { get; set; }
+        public string Title { get; set; }
 
-        public string TextSubMenu { get; set; }
+        public string OfferQuestion { get; set; }
 
         public void GeneratePayloads()
         {

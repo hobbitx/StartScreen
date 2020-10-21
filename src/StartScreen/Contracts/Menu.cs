@@ -7,9 +7,12 @@ namespace StartScreen.Contracts
 {
     public class Menu
     {
+        public int Id { get; set; }
         public string Title { get; set; }
 
         public List<ItemMenu> Items { get; set; }
+
+        public bool isFaq { get; set; }
 
     }
 }
